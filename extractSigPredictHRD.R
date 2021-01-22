@@ -4,12 +4,11 @@ options(stringsAsFactors=F) # to avoid invalid factor level warning
 
 args <- commandArgs(TRUE)
 
-chordToolDir <- args[1]
-  workingDir <- args[2]
-  sampleName <- args[3]
-   snvIndVcf <- args[4]
-       svVcf <- args[5]
-refGenomeVsn <- args[6] # RG_37 or RG_38
+  workingDir <- args[1]
+  sampleName <- args[2]
+   snvIndVcf <- args[3]
+       svVcf <- args[4]
+refGenomeVsn <- args[5] # RG_37 or RG_38
    sigOutTxt <- paste0( workingDir, '/', sampleName, '_chord_signatures.txt')
    prdOutTxt <- paste0( workingDir, '/', sampleName, '_chord_prediction.txt')
 
@@ -18,8 +17,8 @@ setwd(workingDir)
 
 suppressPackageStartupMessages(library('devtools'))
 suppressPackageStartupMessages(library('randomForest'))
-suppressPackageStartupMessages(load_all(paste0(chordToolDir, '/mutSigExtractor-1.14')))
-suppressPackageStartupMessages(load_all(paste0(chordToolDir, '/CHORD-2.00')))
+suppressPackageStartupMessages(library('mutSigExtractor'))
+suppressPackageStartupMessages(library('CHORD-2'))
 
 cat("[INFO] Package NamespaceVersions after loading:\n")
 for (pkgName in c("mutSigExtractor", "CHORD")){
@@ -39,7 +38,6 @@ if (refGenomeVsn == "RG_37") {
 }
 
 cat("[INFO] CHORD Settings:\n")
-cat("[INFO]   Chord dir:", chordToolDir, "\n")
 cat("[INFO]   Working dir:", workingDir, "\n")
 cat("[INFO]   Sample name:", sampleName, "\n")
 cat("[INFO]   Somatic SNV/IND vcf:", snvIndVcf, "\n")
