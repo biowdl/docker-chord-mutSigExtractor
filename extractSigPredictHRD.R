@@ -18,7 +18,7 @@ setwd(workingDir)
 suppressPackageStartupMessages(library('devtools'))
 suppressPackageStartupMessages(library('randomForest'))
 suppressPackageStartupMessages(library('mutSigExtractor'))
-suppressPackageStartupMessages(library('CHORD-2'))
+suppressPackageStartupMessages(library('CHORD'))
 
 cat("[INFO] Package NamespaceVersions after loading:\n")
 for (pkgName in c("mutSigExtractor", "CHORD")){
